@@ -1,16 +1,19 @@
 import discord
+import os
 from discord.ext import commands
 from discord.ui import View, Button
+from keep_alive import keep_alive
 
 intents = discord.Intents.default()
 intents.members = True  # Нужно для работы с ролями
 
 bot = commands.Bot(command_prefix="?", intents=intents)
 
-TOKEN = "MTM1OTE0MTQyOTY3ODU3NTY5Ng.GK5S2L.tIf-ASS5pa2-QmtffwZUx9u1eZRytcbdn24LYw"
+TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1359121463436775540
 ROLE_ID = 1359121462903963687
 
+keep_alive()
 
 class VerifyButton(discord.ui.View):
     def __init__(self):
